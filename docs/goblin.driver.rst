@@ -1,6 +1,6 @@
-goblin.driver package
+djraph.driver package
 =====================
 
 Contains aliases to classes from `aiogremlin`:
 
-.. automodule:: goblin.driver
+.. automodule:: djraph.driver

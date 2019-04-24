@@ -1,7 +1,5 @@
 import pytest
-
-import goblin
-from goblin import element
+from djraph import element
 
 
 @pytest.mark.asyncio

@@ -10,9 +10,9 @@
 #
 # from aiogremlin.gremlin_python.driver import request
 #
-# import goblin
-# from goblin import driver
-# from goblin import provider
+# import djraph
+# from djraph import driver
+# from djraph import provider
 #
 # request_id = uuid.UUID(int=215449331521667564889692237976543325869,
 #                        version=4)
@@ -159,7 +159,7 @@
 #
 # @pytest.mark.asyncio
 # async def test_app_cluster_provider(event_loop):
-#     app = await goblin.Goblin.open(event_loop, provider=TestProvider)
+#     app = await djraph.Djraph.open(event_loop, provider=TestProvider)
 #     assert app._provider is TestProvider
 #     assert app._cluster.config['provider'] is TestProvider
 #
@@ -168,7 +168,7 @@
 #
 # @pytest.mark.asyncio
 # async def test_app_provider_hashable_id(event_loop):
-#     app = await goblin.Goblin.open(event_loop, provider=TestProvider)
+#     app = await djraph.Djraph.open(event_loop, provider=TestProvider)
 #     assert app._get_hashable_id is TestProvider.get_hashable_id
 #
 #     await app.close()

@@ -1,4 +1,4 @@
-goblin package
+djraph package
 ==============
 
 Subpackages
@@ -6,71 +6,71 @@ Subpackages
 
 .. toctree::
 
-    goblin.driver
+    djraph.driver
 
 Submodules
 ----------
 
-goblin.abc module
+djraph.abc module
 -----------------
 
-.. automodule:: goblin.abc
+.. automodule:: djraph.abc
     :members:
     :undoc-members:
     :show-inheritance:
 
-goblin.app module
+djraph.app module
 -----------------
 
-.. automodule:: goblin.app
+.. automodule:: djraph.app
     :members:
     :undoc-members:
     :show-inheritance:
 
-goblin.element module
+djraph.element module
 ---------------------
 
-.. automodule:: goblin.element
+.. automodule:: djraph.element
     :members:
     :undoc-members:
     :show-inheritance:
 
-goblin.exception module
+djraph.exception module
 -----------------------
 
-.. automodule:: goblin.exception
+.. automodule:: djraph.exception
     :members:
     :undoc-members:
     :show-inheritance:
 
-goblin.manager module
+djraph.manager module
 ---------------------
 
-.. automodule:: goblin.manager
+.. automodule:: djraph.manager
     :members:
     :undoc-members:
     :show-inheritance:
 
-goblin.mapper module
+djraph.mapper module
 --------------------
 
-.. automodule:: goblin.mapper
+.. automodule:: djraph.mapper
     :members:
     :undoc-members:
     :show-inheritance:
 
-goblin.properties module
+djraph.properties module
 ------------------------
 
-.. automodule:: goblin.properties
+.. automodule:: djraph.properties
     :members:
     :undoc-members:
     :show-inheritance:
 
-goblin.session module
+djraph.session module
 ---------------------
 
-.. automodule:: goblin.session
+.. automodule:: djraph.session
     :members:
     :undoc-members:
     :show-inheritance:
@@ -78,7 +78,7 @@ goblin.session module
 Module contents
 ---------------
 
-.. automodule:: goblin
+.. automodule:: djraph
     :members:
     :undoc-members:
     :show-inheritance:

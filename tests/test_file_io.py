@@ -1,5 +1,5 @@
-from goblin import element
-from goblin.fileio.graphson import dump, dumps, AdjList
+from djraph import element
+from djraph.fileio.graphson import dump, dumps, AdjList
 
 
 # def test_dump_simple_vertex(person):

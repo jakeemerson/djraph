@@ -1,7 +1,7 @@
 Using Graph (GLV)
 =================
 
-:py:mod:`~goblin.app.Goblin` provides access to the underlying :py:mod:`aiogremlin`
+:py:mod:`~djraph.app.Djraph` provides access to the underlying :py:mod:`aiogremlin`
 asynchronous version of the Gremlin-Python Gremlin Language Variant (GLV) that
 is bundled with Apache TinkerPop beginning with the 3.2.2 release. Traversals are
 generated using the class
@@ -10,13 +10,13 @@ connection class, either
 :py:class:`DriverRemoteConnection<aiogremlin.remote.driver_remote_connection.DriverRemoteConnection>`::
 
     >>> import asyncio
-    >>> import goblin  # provides aliases to common aiogremlin objects
+    >>> import djraph  # provides aliases to common aiogremlin objects
 
     >>> loop = asyncio.get_event_loop()
     >>> remote_conn = loop.run_until_complete(
-    ...     goblin.DriverRemoteConnection.open(
+    ...     djraph.DriverRemoteConnection.open(
     ...         "http://localhost:8182/gremlin", 'g'))
-    >>> graph = goblin.driver.Graph()
+    >>> graph = djraph.driver.Graph()
     >>> g = graph.traversal().withRemote(remote_conn)
 
 Once you have a traversal source, it's all Gremlin...::
@@ -51,7 +51,7 @@ The Side Effect Interface
 -------------------------
 
 When using TinkerPop 3.2.2+ with the default
-:py:mod:`Goblin<goblin.app.Goblin>` provides an asynchronous side effects interface using the
+:py:mod:`Djraph<djraph.app.Djraph>` provides an asynchronous side effects interface using the
 :py:class:`AsyncRemoteTraversalSideEffects<aiogremlin.remote.driver_remote_side_effects.AsyncRemoteTraversalSideEffects>`
 class. This allows side effects to be retrieved after executing the traversal::
 

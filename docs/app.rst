@@ -1,22 +1,22 @@
-Configuring the :py:mod:`Goblin<goblin>` App Object
+Configuring the :py:mod:`Djraph<djraph>` App Object
 ===================================================
 
-The :py:class:`Goblin<goblin.app.Goblin>` object generally supports the same
+The :py:class:`Djraph<djraph.app.Djraph>` object generally supports the same
 configuration options as
 :py:class:`Cluster<aiogremlin.driver.cluster.Cluster>`. Please see the
 :doc:`driver docs</driver>` for a complete list of configuration parameters.
 
 
-The :py:class:`Goblin<goblin.app.Goblin>` object should be created using the
-:py:class:`open<goblin.app.Goblin.open>` classmethod, and configuration can
+The :py:class:`Djraph<djraph.app.Djraph>` object should be created using the
+:py:class:`open<djraph.app.Djraph.open>` classmethod, and configuration can
 be passed as keyword arguments, or loaded from a config file::
 
     >>> import asyncio
-    >>> from goblin import Goblin
+    >>> from djraph import Djraph
 
     >>> loop = asyncio.get_event_loop()
 
-    >>> app = loop.run_until_complete(Goblin.open(loop))
+    >>> app = loop.run_until_complete(Djraph.open(loop))
     >>> app.config_from_file('config.yml')
 
 Contents of `config.yml`::
@@ -34,12 +34,12 @@ Contents of `config.yml`::
     min_conns: 1
     max_times_acquired: 16
     max_inflight: 64
-    message_serializer: 'goblin.driver.GraphSONMessageSerializer'
+    message_serializer: 'djraph.driver.GraphSONMessageSerializer'
 
-Special :py:mod:`Goblin<goblin>` App Configuration
+Special :py:mod:`Djraph<djraph>` App Configuration
 --------------------------------------------------------------
 
-:py:class:`Goblin<goblin.app.Goblin>` supports two additional configuration
+:py:class:`Djraph<djraph.app.Djraph>` supports two additional configuration
 keyword parameters: `aliases` and `get_hashable_id`.
 
 `aliases`
@@ -48,7 +48,7 @@ keyword parameters: `aliases` and `get_hashable_id`.
 `aliases` as stated in the TinkerPop docs: are "a map of key/value pairs that
 allow globally bound Graph and TraversalSource objects to be aliased to
 different variable names for purposes of the current request". Setting the
-aliases on the :py:class:`Goblin<goblin.app.Goblin>` object provides a default
+aliases on the :py:class:`Djraph<djraph.app.Djraph>` object provides a default
 for this value to be passed on each request.
 
 `get_hashable_id`
@@ -56,7 +56,7 @@ for this value to be passed on each request.
 
 `get_hashable_id` is a callable that translates a graph id into a hash
 that can be used to map graph elements in the
-:py:class:`Session<goblin.session.Session>` element cache. In many cases,
+:py:class:`Session<djraph.session.Session>` element cache. In many cases,
 it is not necessary to provide a value for this keyword argument. For example,
 TinkerGraph assigns integer IDs that work perfectly for this purpose. However,
 other provider implementations, such as DSE, use more complex data structures
@@ -69,5 +69,5 @@ its values to produces a hashable id::
     ...     id_hash = functools.reduce(operator.xor, hashes, 0)
     ...     return id_hash
 
-Look for provider specific :py:mod:`Goblin<goblin>` libraries in the near
+Look for provider specific :py:mod:`Djraph<djraph>` libraries in the near
 future!

@@ -5,8 +5,8 @@ except ImportError:
     import json
 
 from gremlin_python.structure.io import graphson
-from goblin.element import Vertex, Edge, VertexProperty
-from goblin.manager import ListVertexPropertyManager
+from djraph.element import Vertex, Edge, VertexProperty
+from djraph.manager import ListVertexPropertyManager
 
 
 writer = graphson.GraphSONWriter()
@@ -18,7 +18,7 @@ vp_id = 10
 
 
 def dump(fpath, *adj_lists, mode="w"):
-    """Convert Goblin elements to GraphSON"""
+    """Convert Djraph elements to GraphSON"""
     with open(fpath, mode) as f:
         for adj_list in adj_lists:
             dumped = dumps(adj_list)
@@ -26,7 +26,7 @@ def dump(fpath, *adj_lists, mode="w"):
 
 
 def dumps(adj_list):
-    """Convert Goblin elements to GraphSON"""
+    """Convert Djraph elements to GraphSON"""
     vertex = _prep_vertex(adj_list.vertex)
     for inE in adj_list.inE:
         prepped = _prep_edge(inE, "inV")

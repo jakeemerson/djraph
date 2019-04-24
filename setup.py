@@ -43,14 +43,14 @@ packages = find_packages()
 
 # Get the version string. Cannot be done with import!
 g = {}
-with open(os.path.join('goblin', 'version.py'), 'rt') as fp:
+with open(os.path.join('djraph', 'version.py'), 'rt') as fp:
     exec(fp.read(), g)
     version = g['__version__']
 
 setup(
-    name='goblin',
+    name='djraph',
     version=version,
-    url='https://github.com/davebshow/goblin',
+    url='https://github.com/davebshow/djraph',
     license='Apache License 2.0',
     author='davebshow',
     author_email='davebshow@gmail.com',

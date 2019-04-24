@@ -4,7 +4,7 @@ import logging
 
 from gremlin_python.statics import long
 
-from goblin import abc, exception
+from djraph import abc, exception
 
 logger = logging.getLogger(__name__)
 
@@ -44,9 +44,9 @@ class PropertyDescriptor:
 class Property(abc.BaseProperty):
     """
     API class used to define properties. Replaced with
-    :py:class:`PropertyDescriptor` by :py:class:`goblin.element.ElementMeta`.
+    :py:class:`PropertyDescriptor` by :py:class:`djraph.element.ElementMeta`.
 
-    :param goblin.abc.DataType data_type: Str or class of data type
+    :param djraph.abc.DataType data_type: Str or class of data type
     :param str db_name: User defined custom name for property in db
     :param default: Default value for this property.
     """

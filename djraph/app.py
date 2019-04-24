@@ -1,4 +1,4 @@
-"""Goblin application class and class constructor"""
+"""Djraph application class and class constructor"""
 
 import collections
 import importlib
@@ -6,17 +6,17 @@ import logging
 
 import aiogremlin
 
-from goblin import element, provider, session
+from djraph import element, provider, session
 
 logger = logging.getLogger(__name__)
 
 
 # Main API classes
-class Goblin:
+class Djraph:
     """
     Class used to encapsulate database connection configuration and generate
     database connections Used as a factory to create
-    :py:class:`Session<goblin.session.Session>` objects.
+    :py:class:`Session<djraph.session.Session>` objects.
 
     :param str url: Database url
     :param asyncio.BaseEventLoop loop: Event loop implementation
@@ -56,7 +56,7 @@ class Goblin:
         # aiogremlin does not yet support providers
         cluster = await aiogremlin.Cluster.open(
             loop, aliases=aliases, **config)
-        app = Goblin(
+        app = Djraph(
             cluster,
             provider=provider,
             get_hashable_id=get_hashable_id,
@@ -95,7 +95,7 @@ class Goblin:
         """
         Register user created Element classes.
 
-        :param goblin.element.Element elements: User defined Element classes
+        :param djraph.element.Element elements: User defined Element classes
         """
         for element in elements:
             if element.__type__ == 'vertex':
@@ -141,7 +141,7 @@ class Goblin:
         """
         Create a session object.
 
-        :returns: :py:class:`Session<goblin.session.Session>` object
+        :returns: :py:class:`Session<djraph.session.Session>` object
         """
         remote_connection = await aiogremlin.DriverRemoteConnection.using(
             self._cluster, aliases=self._aliases)

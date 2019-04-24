@@ -3,7 +3,7 @@ import uuid
 
 import pytest
 
-from goblin.driver import GremlinServer
+from djraph.driver import GremlinServer
 
 
 @pytest.mark.asyncio

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# goblin documentation build configuration file, created by
+# djraph documentation build configuration file, created by
 # sphinx-quickstart on Sat Jul 16 14:01:32 2016.
 #
 # This file is execfile()d with the current directory set to its
@@ -59,7 +59,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'goblin'
+project = 'djraph'
 copyright = '2016, David M. Brown'
 author = 'David M. Brown'
 
@@ -70,7 +70,7 @@ author = 'David M. Brown'
 # Get the version string. Cannot be done with import!
 g = {}
 with open(os.path.join(os.path.dirname(__file__), '..',
-                       'goblin', 'version.py'),
+                       'djraph', 'version.py'),
           'rt') as fp:
     exec(fp.read(), g)
     version = g['__version__']
@@ -147,7 +147,7 @@ html_theme_options = {
     'description': 'Async Python toolkit for the TP3 Gremlin Server',
     'logo_text_align': 'left',
     'github_user': 'davebshow',
-    'github_repo': 'goblin',
+    'github_repo': 'djraph',
     'github_button': True,
     'github_banner': True,
     'travis_button': True
@@ -159,7 +159,7 @@ html_theme_path = [alabaster.get_path()]
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
 #
-# html_title = 'goblin v0.1.1'
+# html_title = 'djraph v0.1.1'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #
@@ -263,7 +263,7 @@ html_sidebars = {
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'goblindoc'
+htmlhelp_basename = 'djraphdoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -289,7 +289,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'goblin.tex', 'goblin Documentation',
+    (master_doc, 'djraph.tex', 'djraph Documentation',
      'David M. Brown', 'manual'),
 ]
 
@@ -331,7 +331,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'goblin', 'goblin Documentation',
+    (master_doc, 'djraph', 'djraph Documentation',
      [author], 1)
 ]
 
@@ -346,8 +346,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'goblin', 'goblin Documentation',
-     author, 'goblin', 'One line description of project.',
+    (master_doc, 'djraph', 'djraph Documentation',
+     author, 'djraph', 'One line description of project.',
      'Miscellaneous'),
 ]
 

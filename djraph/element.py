@@ -5,7 +5,7 @@ import logging
 import inflection
 from gremlin_python.process.traversal import Cardinality
 
-from goblin import abc, exception, mapper, properties
+from djraph import abc, exception, mapper, properties
 
 logger = logging.getLogger(__name__)
 
@@ -13,9 +13,9 @@ logger = logging.getLogger(__name__)
 class ElementMeta(type):
     """
     Metaclass for graph elements. Responsible for creating the
-    :py:class:`Mapping<goblin.mapper.Mapping>` object and replacing user
-    defined :py:class:`goblin.properties.Property` with
-    :py:class:`goblin.properties.PropertyDescriptor`.
+    :py:class:`Mapping<djraph.mapper.Mapping>` object and replacing user
+    defined :py:class:`djraph.properties.Property` with
+    :py:class:`djraph.properties.PropertyDescriptor`.
     """
 
     def __new__(cls, name, bases, namespace, **kwds):

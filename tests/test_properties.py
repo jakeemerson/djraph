@@ -3,7 +3,7 @@
 import pytest
 from gremlin_python.statics import long
 
-from goblin import element, exception, manager, properties
+from djraph import element, exception, manager, properties
 
 
 def test_set_change_property(person, lives_in):

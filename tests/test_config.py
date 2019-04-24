@@ -3,8 +3,8 @@ import os
 import config_module
 import pytest
 
-import goblin
-from goblin import driver, exception
+import djraph
+from djraph import driver, exception
 
 dirname = os.path.dirname(os.path.dirname(__file__))
 
@@ -32,7 +32,7 @@ def test_cluster_default_config(event_loop):
 @pytest.mark.asyncio
 async def test_app_default_config(event_loop):
     cluster = driver.Cluster(event_loop)
-    app = goblin.Goblin(cluster)
+    app = djraph.Djraph(cluster)
     assert app.config['scheme'] == 'ws'
     assert app.config['hosts'] == ['localhost']
     assert app.config['port'] == 8182

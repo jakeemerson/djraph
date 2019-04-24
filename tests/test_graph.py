@@ -2,7 +2,7 @@ import pytest
 from aiogremlin import process
 from gremlin_python.process.traversal import Binding
 
-from goblin import driver
+from djraph import driver
 
 
 @pytest.mark.asyncio

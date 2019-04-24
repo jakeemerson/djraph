@@ -3,7 +3,7 @@
 import functools
 import logging
 
-from goblin import exception
+from djraph import exception
 
 logger = logging.getLogger(__name__)
 
@@ -140,12 +140,12 @@ def map_edge_to_ogm(result, props, element, *, mapping=None):
     sid = result.outV.id
     esid = getattr(element.source, 'id', None)
     if _check_id(sid, esid):
-        from goblin.element import GenericVertex
+        from djraph.element import GenericVertex
         element.source = GenericVertex()
     tid = result.inV.id
     etid = getattr(element.target, 'id', None)
     if _check_id(tid, etid):
-        from goblin.element import GenericVertex
+        from djraph.element import GenericVertex
         element.target = GenericVertex()
     setattr(element.source, 'id', sid)
     setattr(element.target, 'id', tid)

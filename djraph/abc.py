@@ -3,14 +3,14 @@ import logging
 
 from gremlin_python.process.traversal import Cardinality
 
-from goblin import element, exception, manager
+from djraph import element, exception, manager
 
 logger = logging.getLogger(__name__)
 
 
 class DataType(abc.ABC):
     """
-    Abstract base class for Goblin Data Types. All custom data types should
+    Abstract base class for Djraph Data Types. All custom data types should
     inherit from :py:class:`DataType`.
     """
 

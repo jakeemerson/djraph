@@ -1,7 +1,7 @@
-Goblin API
+Djraph API
 ==========
 
 .. toctree::
    :maxdepth: 4
 
-   goblin
+   djraph

@@ -2,7 +2,7 @@ import collections
 import datetime
 import logging
 
-from goblin import properties
+from djraph import properties
 
 logger = logging.getLogger(__name__)
 
@@ -44,7 +44,7 @@ def get_schema(app, indices=None):
     schema_definition += "// Edge schema\n"
     for label, edge in app.edges.items():
         schema_definition += get_edge_schema(label, edge)
-    # Need to register vertex props with app TODO Fix in Goblin
+    # Need to register vertex props with app TODO Fix in Djraph
 
     schema_definition += get_indices_schema(indices)
     schema_definition += "mgmt.commit()"

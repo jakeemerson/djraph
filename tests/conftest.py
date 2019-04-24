@@ -3,10 +3,10 @@ import asyncio
 import pytest
 from gremlin_python.process.traversal import Cardinality
 
-from goblin import Goblin, driver, element, properties
-from goblin.driver import (
+from djraph import Djraph, driver, element, properties
+from djraph.driver import (
     Connection, DriverRemoteConnection, GraphSONMessageSerializer)
-from goblin.provider import TinkerGraph
+from djraph.provider import TinkerGraph
 
 
 def pytest_generate_tests(metafunc):
@@ -80,13 +80,13 @@ def provider(request):
         return TinkerGraph
     elif provider == 'dse':
         try:
-            import goblin_dse
+            import djraph_dse
         except ImportError:
             raise RuntimeError(
-                "Couldn't run tests with DSEGraph provider: the goblin_dse "
+                "Couldn't run tests with DSEGraph provider: the djraph_dse "
                 "package must be installed")
         else:
-            return goblin_dse.DSEGraph
+            return djraph_dse.DSEGraph
 
 
 @pytest.fixture
@@ -192,7 +192,7 @@ def remote_graph():
 @pytest.fixture
 def app(gremlin_host, gremlin_port, event_loop, provider, aliases):
     app = event_loop.run_until_complete(
-        Goblin.open(
+        Djraph.open(
             event_loop,
             provider=provider,
             aliases=aliases,
@@ -345,7 +345,7 @@ def add_doctest_default(doctest_namespace, tmpdir, event_loop, app):
         "min_conns: 1\n"
         "max_times_acquired: 16\n"
         "max_inflight: 64\n"
-        "message_serializer: 'goblin.driver.GraphSONMessageSerializer'\n"
+        "message_serializer: 'djraph.driver.GraphSONMessageSerializer'\n"
     )
     with tmpdir.as_cwd():
         yield

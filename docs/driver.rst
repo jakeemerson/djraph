@@ -5,7 +5,7 @@ Connecting to a :py:class:`Cluster<aiogremlin.driver.cluster.Cluster>`
 ----------------------------------------------------------------------
 
 To take advantage of the higher level features of the
-:py:mod:`driver<goblin.driver>`, :py:mod:`~goblin.app.Goblin` provides the
+:py:mod:`driver<djraph.driver>`, :py:mod:`~djraph.app.Djraph` provides the
 :py:class:`Cluster<aiogremlin.driver.cluster.Cluster>` object.
 :py:class:`Cluster<aiogremlin.driver.cluster.Cluster>` is used to create
 multi-host clients that leverage connection pooling and sharing. Its interface

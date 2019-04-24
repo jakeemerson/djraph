@@ -8,7 +8,7 @@ from aiogremlin import exception
 from aiohttp import web
 from gremlin_python.driver import request
 
-from goblin import driver, provider
+from djraph import driver, provider
 
 
 @pytest.mark.asyncio

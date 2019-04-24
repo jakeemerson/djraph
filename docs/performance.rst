@@ -2,7 +2,7 @@ Improving Driver Performance
 ============================
 
 
-The :py:mod:`goblin.driver` aims to be as performant as possible, yet it is
+The :py:mod:`djraph.driver` aims to be as performant as possible, yet it is
 potentially limited by implementation details, as well as its underlying
 software stack i.e., the websocket client, the event loop implementation, etc.
 If necessary, a few tricks can boost its performance.
@@ -11,7 +11,7 @@ If necessary, a few tricks can boost its performance.
 Use ``cython``
 --------------
 
-Before installing :py:mod:`Goblin<goblin>`, install ``cython``::
+Before installing :py:mod:`Djraph<djraph>`, install ``cython``::
 
     $ pip install cython
 

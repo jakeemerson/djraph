@@ -13,9 +13,9 @@ from gremlin_python.driver.remote_connection import RemoteTraversal
 from gremlin_python.process.traversal import Binding, Cardinality, Traverser
 from gremlin_python.structure.graph import Edge, Vertex
 
-from goblin import exception, mapper
-from goblin.element import GenericEdge, GenericVertex, VertexProperty
-from goblin.manager import VertexPropertyManager
+from djraph import exception, mapper
+from djraph.element import GenericEdge, GenericVertex, VertexProperty
+from djraph.manager import VertexPropertyManager
 
 logger = logging.getLogger(__name__)
 
@@ -25,7 +25,7 @@ def bindprop(element_class, ogm_name, val, *, binding=None):
     Helper function for binding ogm properties/values to corresponding db
     properties/values for traversals.
 
-    :param goblin.element.Element element_class: User defined element class
+    :param djraph.element.Element element_class: User defined element class
     :param str ogm_name: Name of property as defined in the ogm
     :param val: The property value
     :param str binding: The binding for val (optional)
@@ -44,9 +44,9 @@ class Session:
     """
     Provides the main API for interacting with the database. Does not
     necessarily correpsond to a database session. Don't instantiate directly,
-    instead use :py:meth:`Goblin.session<goblin.app.Goblin.session>`.
+    instead use :py:meth:`Djraph.session<djraph.app.Djraph.session>`.
 
-    :param goblin.app.Goblin app:
+    :param djraph.app.Djraph app:
     :param aiogremlin.driver.connection.Connection conn:
     """
 
@@ -113,7 +113,7 @@ class Session:
         Generate a traversal using a user defined element class as a
         starting point.
 
-        :param goblin.element.Element element_class: An optional element
+        :param djraph.element.Element element_class: An optional element
             class that will dictate the element type (vertex/edge) as well as
             the label for the traversal source
 
@@ -186,7 +186,7 @@ class Session:
                 return Traverser(element, bulk)
             else:
                 return result
-        # Recursive serialization is broken in goblin
+        # Recursive serialization is broken in djraph
         elif isinstance(result, dict):
             for key in result:
                 result[key] = self._deserialize_result(result[key])
@@ -223,7 +223,7 @@ class Session:
         """
         Add elements to session pending queue.
 
-        :param goblin.element.Element elements: Elements to be added
+        :param djraph.element.Element elements: Elements to be added
         """
         for elem in elements:
             self._pending.append(elem)
@@ -241,7 +241,7 @@ class Session:
         """
         Remove a vertex from the db.
 
-        :param goblin.element.Vertex vertex: Vertex to be removed
+        :param djraph.element.Vertex vertex: Vertex to be removed
         """
         traversal = self._g.V(Binding('vid', vertex.id)).drop()
         result = await self._simple_traversal(traversal, vertex)
@@ -259,7 +259,7 @@ class Session:
         """
         Remove an edge from the db.
 
-        :param goblin.element.Edge edge: Element to be removed
+        :param djraph.element.Edge edge: Element to be removed
         """
         eid = edge.id
         if isinstance(eid, dict):
@@ -280,9 +280,9 @@ class Session:
         """
         Save an element to the db.
 
-        :param goblin.element.Element element: Vertex or Edge to be saved
+        :param djraph.element.Element element: Vertex or Edge to be saved
 
-        :returns: :py:class:`Element<goblin.element.Element>` object
+        :returns: :py:class:`Element<djraph.element.Element>` object
         """
         if elem.__type__ == 'vertex':
             result = await self.save_vertex(elem)
@@ -297,9 +297,9 @@ class Session:
         """
         Save a vertex to the db.
 
-        :param goblin.element.Vertex element: Vertex to be saved
+        :param djraph.element.Vertex element: Vertex to be saved
 
-        :returns: :py:class:`Vertex<goblin.element.Vertex>` object
+        :returns: :py:class:`Vertex<djraph.element.Vertex>` object
         """
         result = await self._save_element(
             vertex, self._check_vertex, self._add_vertex, self._update_vertex)
@@ -311,9 +311,9 @@ class Session:
         """
         Save an edge to the db.
 
-        :param goblin.element.Edge element: Edge to be saved
+        :param djraph.element.Edge element: Edge to be saved
 
-        :returns: :py:class:`Edge<goblin.element.Edge>` object
+        :returns: :py:class:`Edge<djraph.element.Edge>` object
         """
         if not (hasattr(edge, 'source') and hasattr(edge, 'target')):
             raise exception.ElementError(
@@ -328,9 +328,9 @@ class Session:
         """
         Get a vertex from the db. Vertex must have id.
 
-        :param goblin.element.Vertex element: Vertex to be retrieved
+        :param djraph.element.Vertex element: Vertex to be retrieved
 
-        :returns: :py:class:`Vertex<goblin.element.Vertex>` | None
+        :returns: :py:class:`Vertex<djraph.element.Vertex>` | None
         """
         return await self.g.V(Binding('vid', vertex.id)).next()
 
@@ -338,9 +338,9 @@ class Session:
         """
         Get a edge from the db. Edge must have id.
 
-        :param goblin.element.Edge element: Edge to be retrieved
+        :param djraph.element.Edge element: Edge to be retrieved
 
-        :returns: :py:class:`Edge<goblin.element.Edge>` | None
+        :returns: :py:class:`Edge<djraph.element.Edge>` | None
         """
         eid = edge.id
         if isinstance(eid, dict):
@@ -351,9 +351,9 @@ class Session:
         """
         Update a vertex, generally to change/remove property values.
 
-        :param goblin.element.Vertex vertex: Vertex to be updated
+        :param djraph.element.Vertex vertex: Vertex to be updated
 
-        :returns: :py:class:`Vertex<goblin.element.Vertex>` object
+        :returns: :py:class:`Vertex<djraph.element.Vertex>` object
         """
         props = mapper.map_props_to_db(vertex, vertex.__mapping__)
         traversal = self._g.V(Binding('vid', vertex.id))
@@ -363,9 +363,9 @@ class Session:
         """
         Update an edge, generally to change/remove property values.
 
-        :param goblin.element.Edge edge: Edge to be updated
+        :param djraph.element.Edge edge: Edge to be updated
 
-        :returns: :py:class:`Edge<goblin.element.Edge>` object
+        :returns: :py:class:`Edge<djraph.element.Edge>` object
         """
         props = mapper.map_props_to_db(edge, edge.__mapping__)
         eid = edge.id

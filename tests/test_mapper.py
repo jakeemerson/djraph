@@ -1,6 +1,6 @@
 import pytest
 
-from goblin import exception, properties
+from djraph import exception, properties
 
 
 def test_property_mapping(person, lives_in):
